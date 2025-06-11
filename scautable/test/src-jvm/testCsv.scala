@@ -404,8 +404,8 @@ import CsvSchema.*"""
     def csv: CsvIterator[("colA", "colA", "colA", "colB", "colC", "colA")] = CSV.resource("dups.csv")
 
     // If the next two lines compile, this is a pretty good indicator that we've deduplicated the headers
-    def dedupCsv: CsvIterator[("colA", "colA_2", "colA_3", "colB", "colC", "colA_4")] = CSV.deduplicateHeaders(csv)
-    val testVal = dedupCsv.drop(1).next().colA_4
+    def dedupCsv: CsvIterator[("colA", "colA_1", "colA_2", "colB", "colC", "colA_3")] = CSV.deduplicateHeaders(csv)
+    val testVal = dedupCsv.drop(1).next().colA_3
     assert(testVal == "5")
   }
 
