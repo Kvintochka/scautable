@@ -1,6 +1,6 @@
 package io.github.quafadas.scautable
 
-import io.github.quafadas.table.*
+import io.github.quafadas.scautable.*
 import java.time.LocalDate
 
 import NamedTuple.*

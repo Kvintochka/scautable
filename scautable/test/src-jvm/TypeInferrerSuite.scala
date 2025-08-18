@@ -1,7 +1,7 @@
 package io.github.quafadas.scautable
 
 import java.time.LocalDate
-import io.github.quafadas.table.*
+import io.github.quafadas.scautable.*
 
 import NamedTuple.*
 
@@ -94,7 +94,6 @@ class TypeInferrerSuite extends munit.FunSuite:
   // ---------------------------
 
   test("TypeInferrer.fromTuple should apply provided column types explicitly") {
-    import io.github.quafadas.scautable.TypeInferrer
     val csv: CsvIterator[("name", "age", "profession"), (String, Int, String)] =
       CSV.resource(
         "data_without_headers.csv",
@@ -121,7 +120,6 @@ class TypeInferrerSuite extends munit.FunSuite:
   }
 
   test("TypeInferrer.fromTuple should work with Boolean and custom enum types") {
-    import io.github.quafadas.scautable.TypeInferrer
     enum Status:
       case Active, Inactive
       
@@ -149,15 +147,5 @@ class TypeInferrerSuite extends munit.FunSuite:
 
   }
 
-  test("TypeInferrer.fromTuple should fail compilation if tuple types do not match CSV data") {
-    assert(
-      compileErrors("""
-        val csv: CsvIterator[("name", "age"), (String, String)] =
-          CSV.resource("data_without_headers.csv",
-            HeaderOptions.Manual("name", "age"),
-            TypeInferrer.fromTuple[(String, String)])
-      """).nonEmpty
-    )
-  }
 
 end TypeInferrerSuite

@@ -1,4 +1,4 @@
-import io.github.quafadas.table.*
+import io.github.quafadas.scautable.*
 import NamedTuple.*
 
 class CSVSchemaSuite extends munit.FunSuite:
